@@ -16,12 +16,18 @@ public class HelloServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String username = req.getParameter("username");
+        req.getSession().setAttribute("username",username);
         PrintWriter writer = resp.getWriter();
-        writer.println("name:huanghong");
-        writer.println("id:2020211001001319");
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-mm-dd");
+        writer.println("Name:Huang hong");
+        writer.println("ID:2020211001001319");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
         Date date = new Date(System.currentTimeMillis());
         simpleDateFormat.format(date);
-        writer.println("date and time"+date);
+        writer.println("Date and Time "+date);
+        if(username!=null){
+            resp.sendRedirect("index.jsp");
+        }
     }
 }
