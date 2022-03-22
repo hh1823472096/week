@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "LifeCycleServlet", value = "/LifeCycleServlet")
+
 public class LifeCycleServlet extends HttpServlet {
     public  LifeCycleServlet(){
         System.out.println("i am in constructor --> lifeCycleServlet() ");

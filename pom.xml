@@ -16,7 +16,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <junit.version>5.8.1</junit.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -37,7 +36,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <!--http://mvnrepostory.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+    <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>8.4.1.jre8</version>
+    </dependency>
     <build>
         <plugins>
             <plugin>
