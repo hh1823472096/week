@@ -7,14 +7,6 @@ import java.util.logging.SimpleFormatter;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-@WebServlet(name ="JDBCDemo",urlPatterns = {"/jdbc"},
-        initParams = {
-                @WebInitParam(name="driver",value ="com.microsoft.sqlserver.jdbc.SQLServerDriver" ),
-                @WebInitParam(name="url",value ="jdbc:sqlserver://localhost:1433;database=userdb;encrypt=false" ),
-                @WebInitParam(name="username",value ="sa" ),
-                @WebInitParam(name="password",value ="153246" ),
-        }
-)
 public class HelloServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

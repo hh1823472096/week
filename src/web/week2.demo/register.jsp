@@ -14,7 +14,7 @@
 <span style="background: antiquewhite">
 <center>
 <h1>New Registration</h1>
-<form action="${pageContext.request.contextPath}/week" method="post" onsubmit="return register()">
+<form action="${pageContext.request.contextPath}/register" method="post" onsubmit="return register()">
     <input type="text" name="username" id="username" placeholder="username"><span id="span1"></span><br>
      <input type="password" id="password" name="password" placeholder="password"><br>
      <input type="email" id="email" name="email" placeholder="email"> <br>
@@ -27,17 +27,13 @@
     function register(){
         let username = document.getElementById("username").value;
         if(username == null || username === ''){
-            alert("username must be not null!")
+            alert("username be not null!")
             //document.getElementById("span1").innerHTML="不能为空"
             return false;
         }
         let password = document.getElementById("password").value;
         if(password == null || password ===''){
-            alert("password must be not null!")
-            return false;
-        }
-        if(password.length<8){
-            alert("length must be at least 8 characters!");
+            alert("password be not null!")
             return false;
         }
         let email = document.getElementById("email").value;
@@ -47,7 +43,6 @@
             return false;
         }
     }
-
 </script>
 </center>
 </span>

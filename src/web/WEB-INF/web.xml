@@ -8,12 +8,44 @@
         <servlet-class>com.example._2020211001001319huanghong.HelloServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>lifeCycleServlet</servlet-name>
-        <servlet-class>week3.demo.LifeCycleServlet</servlet-class>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>week3.demo.RegisterServlet</servlet-class>
     </servlet>
-    <!--<context-param>
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>week3.demo.RegisterServlet</servlet-class>
+    </servlet>
+    <!--<servlet>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <servlet-class>week4.demo.JDBCDemoServlet</servlet-class>
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.microsoft.sqlserver.jdbcSQLServerDriver</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>-->
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/HelloServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/LifeCycleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <!--<servlet-mapping>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <url-pattern>/jdbc</url-pattern>
+    </servlet-mapping>-->
+    <welcome-file-list>
+        <welcome-file>week2/register.jsp</welcome-file>
+    </welcome-file-list>
+    <context-param>
         <param-name>driver</param-name>
-        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
     </context-param>
     <context-param>
         <param-name>url</param-name>
@@ -26,30 +58,6 @@
     <context-param>
         <param-name>password</param-name>
         <param-value>153246</param-value>
-    </context-param>-->
-    <servlet>
-        <servlet-name>JDBCDemoServlet</servlet-name>
-        <servlet-class>week4.demo.JDBCDemoServlet</servlet-class>
-        <init-param>
-            <param-name>driver</param-name>
-            <param-value>com.microsoft.sqlserver.jdbcSQLServerDriver</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/Hello</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LifeCycleServlet</servlet-name>
-        <url-pattern>/Life</url-pattern>
-    </servlet-mapping>
-    <!--<servlet-mapping>
-        <servlet-name>JDBCDemoServlet</servlet-name>
-        <url-pattern>/jdbc</url-pattern>
-    </servlet-mapping>-->
-   <!-- <welcome-file-list>
-        <welcome-file>week2/register.jsp</welcome-file>
-    </welcome-file-list>-->
+    </context-param>
+
 </web-app>
