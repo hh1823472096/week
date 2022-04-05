@@ -12,7 +12,6 @@
 </head>
 <body>
 <span style="background: antiquewhite">
-<center>
 <h1>New Registration</h1>
 <form action="${pageContext.request.contextPath}/register" method="post" onsubmit="return register()">
     <input type="text" name="username" id="username" placeholder="username"><span id="span1"></span><br>
@@ -44,7 +43,6 @@
         }
     }
 </script>
-</center>
 </span>
 </body>
 </html>
