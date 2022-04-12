@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("password", password);
                 request.setAttribute("email", rse.getString("email"));
                 request.setAttribute("gender", rse.getString("gender"));
-                request.setAttribute("birthdate", rse.getString("birthdate"));
+                request.setAttribute("brithdate", rse.getString("brithdate"));
 
                 request.getRequestDispatcher("userInfo.jsp").forward(request, response);
 

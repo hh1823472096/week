@@ -15,7 +15,7 @@
         <td>Gender:</td><td><%=request.getAttribute("gender")%></td>
     </tr>
     <tr>
-        <td>Birth Date:</td><td><%=request.getAttribute("birthdate")%></td>
+        <td>Birth Date:</td><td><%=request.getAttribute("brithdate")%></td>
     </tr>
 </table>
 

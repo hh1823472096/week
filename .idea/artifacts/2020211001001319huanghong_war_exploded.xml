@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="2020211001001319huanghong:war exploded">
-    <output-path>$PROJECT_DIR$/../apache-tomcat-9.0.59-windows-x64/apache-tomcat-9.0.59/webapps/manager</output-path>
+    <output-path>$PROJECT_DIR$/target/_2020211001001319huanghong-1.0-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -15,6 +15,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre8" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-util:6.1.25" />
         </element>
       </element>
       <element id="directory" name="META-INF">

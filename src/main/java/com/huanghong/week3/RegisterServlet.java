@@ -13,6 +13,8 @@ import java.sql.Connection;
 @WebServlet(name = "register", value = "/register")
 public class RegisterServlet<connection> extends HttpServlet {
     Connection con=null;
+
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -42,7 +44,7 @@ public class RegisterServlet<connection> extends HttpServlet {
         String password= request.getParameter("password");
         String email= request.getParameter("email");
         String gender= request.getParameter("gender");
-        String birthdate= request.getParameter("birthdate");
+        String brithdate= request.getParameter("brithdate");
 
 
         PrintWriter writer=response.getWriter();
@@ -50,7 +52,7 @@ public class RegisterServlet<connection> extends HttpServlet {
         writer.println("<br>password:"+password);
         writer.println("<br>email:"+email);
         writer.println("<br>gender:"+gender);
-        writer.println("<br>birthdate:"+birthdate);
+        writer.println("<br>brithdate:"+brithdate);
         writer.close();
     }
 }
