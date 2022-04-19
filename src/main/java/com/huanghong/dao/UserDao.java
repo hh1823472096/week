@@ -35,11 +35,7 @@ public class UserDao implements IUserDao{
         M.setString(4,email);
         M.setString(5, gender);
         M.setDate(6, brithdate);
-        if(M.executeUpdate()>0){
-            return true;
-        }else{
-            return false;
-        }
+        return M.executeUpdate() > 0;
     }
 
     @Override
@@ -49,7 +45,21 @@ public class UserDao implements IUserDao{
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        return 0;
+        String sql="update usertable set username=?,password=?,email=?,gender=?,brithdate=? where id=?";
+        long id =user.getId();
+        String username = user.getUsername();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        String gender = user.getGender();
+        java.sql.Date birthday = user.getBrithdate();
+        PreparedStatement N = con.prepareStatement(sql);
+        N.setString(1,username);
+        N.setString(2,password);
+        N.setString(3,email);
+        N.setString(4,gender);
+        N.setDate(5,birthday);
+        N.setLong(6,id);
+        return N.executeUpdate();
     }
 
     @Override

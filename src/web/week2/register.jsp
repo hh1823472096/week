@@ -6,18 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="../header.jsp"%>
 <html>
 <head>
-    <title>register</title>
+    <title> new register</title>
 </head>
 <body>
 <span style="background: antiquewhite">
 <h1>New Registration</h1>
 <form action="${pageContext.request.contextPath}/register" method="post" onsubmit="return register()">
-    <input type="text" name="username" id="username" placeholder="username"><span id="span1"></span><br>
+     <input type="text" name="username" id="username" placeholder="username"><span id="span1"></span><br>
      <input type="password" id="password" name="password" placeholder="password"><br>
-     <input type="email" id="email" name="email" placeholder="email"> <br>
-     <strong>Gender</strong> <input type="radio" value="male" name="sex">Male
+     <input type="text" id="email" name="email" placeholder="email"> <br>
+     <strong>Gender</strong> <input type="radio" value="gender" name="sex">Male
             <input type="radio" value="male" name="sex">Female <br>
      <input type="date" id="time" name="date"> <br>
      <input type="submit" value="Register">
@@ -46,3 +47,4 @@
 </span>
 </body>
 </html>
+<%@include file="../footer.jsp"%>

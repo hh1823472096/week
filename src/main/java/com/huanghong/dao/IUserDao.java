@@ -6,12 +6,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-//have all jdbc methods u need ->select,insert,update,delete
+
 public interface IUserDao {
     public boolean saveUser(Connection con, User user) throws SQLException;
     public int deleteUser(Connection con, User user) throws SQLException;
     public int updateUser(Connection con, User user) throws SQLException;
-//select
+
     public User findById(Connection con, Integer id) throws SQLException;
     public User findByUsernamePassword(Connection con, String username,String password) throws SQLException;
     public List<User> findByUsername(Connection con, String username) throws SQLException;

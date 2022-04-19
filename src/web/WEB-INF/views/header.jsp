@@ -1,17 +1,18 @@
+<%@ page import="com.huanghong.model.User" %>
 <html>
  <head>
    <title>My Online Shop</title>
    
  </head>
- <body style="margin:0px;padding:0px;font-family:helvetica;">
+ <body style="margin:0;padding:0;font-family:helvetica;">
  <table width="100%" cellpadding="0" cellspacing="0">
    <tr>
      <td height="78" style="background-color:#788dad;
                             border-width:2px;
                             border-style:solid;
                             border-color:black;
-                            padding:0px;
-                            margin:0px;" valign="bottom">
+                            padding:0;
+                            margin:0;" valign="bottom">
       
      <img src="logo.jpg" align="left">
      </td>
@@ -32,9 +33,22 @@
    </td>
    </tr>
    <tr height="25"><td align="right"><font size="18" color="blue">
-   Welcome,<font size="18" color="red"> Guest</font>
+   Welcome,
+           <%
+               User user=(User) session.getAttribute("user");
+               if(user!=null){
+                   out.println(user.getUsername());
+               }else{
+           %>
+       <font size="18" color="red"> Guest</font>
+       <%
+               }
+       %>
    </font></td> </tr>
   <tr height="20"><td align="right">
+      <%if(session.getAttribute("user")!=null){%>
+      <br> <a href="=logout">Logout</a>
+      %>
    <br> <a href="#">Logout</a>
   <br><a href="#">My Cart</a><br/>
 <a href="register.jsp">Register Here</a>

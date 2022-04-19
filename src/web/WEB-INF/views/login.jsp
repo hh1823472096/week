@@ -24,7 +24,7 @@ nes (22 sloc)  619 Bytes
 %>
 <%
     Cookie[] allCookies=request.getCookies();
-    String username = null,password = null,rememberMeVal = null;
+    String username = "",password = "",rememberMevale ="";
     if(allCookies!=null){
         for (Cookie c:allCookies){
             if (c.getName().equals("cUsername")){
@@ -33,16 +33,16 @@ nes (22 sloc)  619 Bytes
             if (c.getName().equals("cPassword")){
                 password=c.getValue();
             }
-            if (c.getName().equals("rememberMeVal")){
-                rememberMeVal=c.getValue();
+            if (c.getName().equals("cRememberMe")){
+                rememberMevale=c.getValue();
             }
         }
     }
 %>
-<form action="<%=request.getContextPath()%>/login" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
     UserName:<input type="text" name="username" value="<%=username%>"> <br/>
     Password:<input type="password" name="password" value="<%=password%>"> <br/>
-    <input type="checkbox" name="remember" value="1" <%= rememberMeVal.equals("1")?"checked":""%>/>Remember me<br/>
+    <input type="checkbox" name="remember" value="1" <%=rememberMevale.equals("1")?"checked":""%>/>RememberMe<br/>
     <input type="submit" value="Login">
 </form>
 </body>

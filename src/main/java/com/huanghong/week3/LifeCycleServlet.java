@@ -14,7 +14,7 @@ public class LifeCycleServlet extends HttpServlet {
 
     @Override
     public void init()  {
-        System.out.println("i am in init");
+        System.out.println("i am in init()");
     }
 
     @Override
@@ -26,5 +26,9 @@ public class LifeCycleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
+    @Override
+    public void destroy() {
+        System.out.println("i am in destroy()");
     }
 }

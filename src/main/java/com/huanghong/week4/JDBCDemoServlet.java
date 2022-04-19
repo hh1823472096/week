@@ -8,15 +8,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-@WebServlet(name ="JDBCDemo",urlPatterns = {"/jdbc"},
-        initParams = {
-        @WebInitParam(name="driver",value ="com.microsoft.sqlserver.jdbc.SQLServerDriver" ),
-                @WebInitParam(name="url",value ="jdbc:sqlserver://localhost:1433;database=userdb;encrypt=false" ),
-                @WebInitParam(name="username",value ="sa" ),
-                @WebInitParam(name="password",value ="123456" ),
-        },
-        loadOnStartup = 1
-)
+//@WebServlet(name ="JDBCDemo",urlPatterns = {"/jdbc"},
+//        initParams = {
+//        @WebInitParam(name="driver",value ="com.microsoft.sqlserver.jdbc.SQLServerDriver" ),
+//                @WebInitParam(name="url",value ="jdbc:sqlserver://localhost:1433;database=userdb;encrypt=false" ),
+//                @WebInitParam(name="username",value ="sa" ),
+//                @WebInitParam(name="password",value ="123456" ),
+//        },
+//        loadOnStartup = 1
+//)
+@WebServlet(urlPatterns = {"/jdbc"},loadOnStartup = 1)
 public class JDBCDemoServlet extends HttpServlet {
     Connection con=null;
     public void init() throws ServletException{

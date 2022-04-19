@@ -1,13 +1,13 @@
 package com.huanghong.week3;
 
-import javax.servlet.ServletContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 
 @WebServlet(name = "register", value = "/register")
@@ -17,7 +17,7 @@ public class RegisterServlet<connection> extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
+          super.init();
 //        ServletContext application = getServletContext();
 //        String driver = application.getInitParameter("driver");
 //        String url = application.getInitParameter("url");
@@ -45,14 +45,39 @@ public class RegisterServlet<connection> extends HttpServlet {
         String email= request.getParameter("email");
         String gender= request.getParameter("gender");
         String brithdate= request.getParameter("brithdate");
+        String sql ="select max(id) min from usertable";
+        int id = 0;
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                id = resultSet.getInt("min");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String sql1="insert into usertable(id,username,password,email,gender,brithdate)" +
+                "values(?,?,?,?,?,?)";
+        try {
+            PreparedStatement preparedStatement= con.prepareStatement(sql1);
+            preparedStatement.setInt(1,id+1);
+            preparedStatement.setString(2,username);
+            preparedStatement.setString(3,password);
+            preparedStatement.setString(4,email);
+            preparedStatement.setString(5, gender);
+            preparedStatement.setDate(6, Date.valueOf(brithdate));
+            preparedStatement.executeUpdate();
+            response.sendRedirect("Login.jsp");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-
-        PrintWriter writer=response.getWriter();
-        writer.println("<br>username:"+username);
-        writer.println("<br>password:"+password);
-        writer.println("<br>email:"+email);
-        writer.println("<br>gender:"+gender);
-        writer.println("<br>brithdate:"+brithdate);
-        writer.close();
+//        PrintWriter writer=response.getWriter();
+//        writer.println("<br>username:"+username);
+//        writer.println("<br>password:"+password);
+//        writer.println("<br>email:"+email);
+//        writer.println("<br>gender:"+gender);
+//        writer.println("<br>brithdate:"+brithdate);
+//        writer.close();
     }
 }
