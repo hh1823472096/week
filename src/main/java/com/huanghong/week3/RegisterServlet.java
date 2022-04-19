@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 
 @WebServlet(name = "register", value = "/register")
-public class RegisterServlet<connection> extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     Connection con=null;
 
 

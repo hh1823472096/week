@@ -10,11 +10,6 @@ nes (22 sloc)  619 Bytes
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="header.jsp"%>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
 <h1>Login</h1>
 <%
     if (request.getAttribute("message")!=null){
@@ -22,30 +17,9 @@ nes (22 sloc)  619 Bytes
         out.println(request.getAttribute("message"));
     }
 %>
-<%
-    Cookie[] allCookies=request.getCookies();
-    String username = null,password = null,rememberMeVal = null;
-    if(allCookies!=null){
-        for (Cookie c:allCookies){
-            if (c.getName().equals("cUsername")){
-                username=c.getValue();
-            }
-            if (c.getName().equals("cPassword")){
-                password=c.getValue();
-            }
-            if (c.getName().equals("rememberMeVal")){
-                rememberMeVal=c.getValue();
-            }
-        }
-    }
-%>
-<form action="<%=request.getContextPath()%>/login" method="post">
-    UserName:<input type="text" name="username" value="<%=username%>"> <br/>
-    Password:<input type="password" name="password" value="<%=password%>"> <br/>
-    <input type="checkbox" name="remember" value="1" <%= rememberMeVal.equals("1")?"checked":""%>/>Remember me<br/>
+<form action="${pageContext.request.contextPath}/Login" method="post">
+    username:<input type="text"  name="username" placeholder="username"><br>
+    password:<input type="password" name="password" placeholder="password"><br>
     <input type="submit" value="Login">
 </form>
-</body>
-</html>
-
 <%@include file="footer.jsp"%>
