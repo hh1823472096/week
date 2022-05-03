@@ -13,8 +13,6 @@ import java.sql.Connection;
 @WebServlet(name = "register", value = "/register")
 public class RegisterServlet extends HttpServlet {
     Connection con=null;
-
-
     @Override
     public void init() throws ServletException {
           super.init();
@@ -36,6 +34,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request, response);
     }
 
     @Override
@@ -71,13 +70,6 @@ public class RegisterServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-//        PrintWriter writer=response.getWriter();
-//        writer.println("<br>username:"+username);
-//        writer.println("<br>password:"+password);
-//        writer.println("<br>email:"+email);
-//        writer.println("<br>gender:"+gender);
-//        writer.println("<br>brithdate:"+brithdate);
-//        writer.close();
     }
+
 }
