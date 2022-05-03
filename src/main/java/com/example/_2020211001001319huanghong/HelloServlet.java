@@ -1,30 +1,26 @@
 package com.example._2020211001001319huanghong;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.servlet.ServletException;
+import javax.servlet.annotation.*;
 import javax.servlet.http.*;
-public class HelloServlet extends HttpServlet{
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+@WebServlet(name = "helloServlet", value = "/hello-servlet")
+public class HelloServlet extends HttpServlet {
+    private String message;
+
+    public void init() {
+        message = "Hello World!";
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+        System.out.println("i am in HelloServlet-->doget()");
+        // Hello
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>" + message + "</h1>");
+        out.println("</body></html>");
+    }
 
-        String username = req.getParameter("username");
-        req.getSession().setAttribute("username",username);
-        PrintWriter writer = resp.getWriter();
-        writer.println("Name:Huang hong");
-        writer.println("ID:2020211001001319");
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        Date date = new Date(System.currentTimeMillis());
-        simpleDateFormat.format(date);
-        writer.println("Date and Time "+date);
-        if(username!=null){
-            resp.sendRedirect("index.jsp");
-        }
+    public void destroy() {
     }
 }

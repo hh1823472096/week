@@ -11,11 +11,10 @@
         <servlet-name>LifeCycleServlet</servlet-name>
         <servlet-class>com.huanghong.week3.RegisterServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>register</servlet-name>
-        <servlet-class>com.huanghong.week3.RegisterServlet</servlet-class>
-    </servlet>
-
+<!--    <servlet>-->
+<!--        <servlet-name>register</servlet-name>-->
+<!--        <servlet-class>com.huanghong.week3.RegisterServlet</servlet-class>-->
+<!--    </servlet>-->
     <!--<servlet>
         <servlet-name>JDBCDemoServlet</servlet-name>
         <servlet-class>JDBCDemoServlet</servlet-class>
@@ -63,5 +62,29 @@
         <param-name>password</param-name>
         <param-value>153246</param-value>
     </context-param>
+    <filter>
+        <filter-name>HelloFilter</filter-name>
+        <filter-class>com.huanghong.filter.HelloFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HelloFilter</filter-name>
+        <url-pattern>/hello-servlet</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>LoggerFilter</filter-name>
+        <filter-class>com.huanghong.filter.LoggerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoggerFilter</filter-name>
+        <url-pattern>/hello-servlet</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.huanghong.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/hello-servlet</url-pattern>
+    </filter-mapping>
 
 </web-app>
