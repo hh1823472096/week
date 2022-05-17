@@ -15,6 +15,9 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre8" />
+          <element id="library" level="project" name="Maven: org.glassfish:javax.servlet.jsp.jstl:3.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.taglibs:taglibs-standard-spec:1.2.5" />
+          <element id="library" level="project" name="Maven: org.apache.taglibs:taglibs-standard-impl:1.2.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">

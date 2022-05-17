@@ -14,7 +14,7 @@ public class Category implements Serializable{
     private int categoryId;
     private String categoryName;
     private String description;
-    private Boolean active;
+    private String active;
 
     public Category() {
     }
@@ -22,8 +22,7 @@ public class Category implements Serializable{
     public Category(String categoryName) {
         this.categoryName = categoryName;
     }
-
-    public Category(String categoryName, String description, Boolean active) {
+    public Category(String categoryName, String description, String active) {
         this.categoryName = categoryName;
         this.description = description;
         this.active = active;
@@ -34,8 +33,8 @@ public class Category implements Serializable{
     public void setCategoryName(String categoryName){this.categoryName=categoryName;}
     public String getDescription(){return this.description;}
     public void setDescription(String description){this.description=description;}
-    public Boolean getActive(){return  this.active;}
-    public void setActive(Boolean active){this.active=active;}
+    public String getActive(){return  this.active;}
+    public void setActive(String active){this.active=active;}
 
 
 
@@ -63,15 +62,16 @@ public class Category implements Serializable{
 
     public static String findByCategoryId(Connection con, int categoryId){
         String categoryName = null;
+        String queryString = "select CategoryName from Category where categoryId=?";
         try {
-            String queryString = "select categoryName from Category where categoryId";
-            PreparedStatement ps = con.prepareStatement(queryString);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                categoryName = rs.getString("categoryName");
+            PreparedStatement statement = con.prepareStatement(queryString);
+            statement.setInt(1,categoryId);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                categoryName = resultSet.getString("categoryName");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return categoryName;
     }

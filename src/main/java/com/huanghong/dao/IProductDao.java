@@ -14,7 +14,7 @@ public interface IProductDao {
 	 * Insert a product
 	 * @return int
 	 */
-	public int save(Product product, Connection con) throws SQLException;
+	public int save(Product product, InputStream picture, Connection con) throws SQLException;
 	/**
 	 * Delete a product by productId
 	 * @return int
@@ -55,5 +55,7 @@ public interface IProductDao {
 	 * Select all product by name like
 	 * @return List of product
 	 */
-	public InputStream getPicture(Integer productId, Connection con) throws SQLException;
+	public byte[] getPicture(Integer productId, Connection con) throws SQLException;
+
+	public byte[] getPictureById(Integer productId,Connection con) throws SQLException;
 }

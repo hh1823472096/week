@@ -29,12 +29,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-engine</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
@@ -46,13 +40,22 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>8.4.1.jre8</version>
         </dependency>
-        <!--        <dependency>-->
-<!--            <groupId>org.mortbay.jetty</groupId>-->
-<!--            <artifactId>jetty-util</artifactId>-->
-<!--            <version>6.1.25</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.servlet.jsp.jstl</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-spec</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>1.2.5</version>
+        </dependency>
     </dependencies>
-    <!--http://mvnrepostory.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
     <build>
         <plugins>
             <plugin>
