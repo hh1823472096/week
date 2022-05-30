@@ -8,9 +8,13 @@
         <servlet-class>com.example._2020211001001319huanghong.HelloServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-name>LifeCycleServlet1</servlet-name>
         <servlet-class>com.huanghong.week3.RegisterServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet1</servlet-name>
+        <url-pattern>/life1</url-pattern>
+    </servlet-mapping>
 <!--    <servlet>-->
 <!--        <servlet-name>register</servlet-name>-->
 <!--        <servlet-class>com.huanghong.week3.RegisterServlet</servlet-class>-->
@@ -85,6 +89,32 @@
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/hello-servlet</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.huanghong.lab.LifeCycleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/life</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyDearCycleServlet</servlet-name>
+        <servlet-class>com.huanghong.lab.MyDearServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyDearCycleServlet</servlet-name>
+        <url-pattern>/dear</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>YourNameFilter</filter-name>
+        <filter-class>com.huanghong.lab.YourNameFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>YourNameFilter</filter-name>
+        <url-pattern>/lab2/welcome.jsp</url-pattern>
     </filter-mapping>
 
 </web-app>
