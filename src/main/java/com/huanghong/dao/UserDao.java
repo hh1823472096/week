@@ -51,8 +51,7 @@ public class UserDao implements IUserDao{
         st.setLong(4, Long.parseLong(gender));
         st.setDate(5,birthday);
         st.setLong(6,id);
-        int result = st.executeUpdate();
-        return result;
+        return st.executeUpdate();
     }
 
     @Override
