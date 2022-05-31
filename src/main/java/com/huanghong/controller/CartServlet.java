@@ -72,7 +72,6 @@ public class CartServlet extends HttpServlet {
             cart.add(new Item(p,quantityParam));
             session.setAttribute("cart",cart);
         }else{
-            //existing Cart
             List<Item> cart = (List<Item>) session.getAttribute("cart");
             int index = isExisting(id,cart);
             if(index == -1){

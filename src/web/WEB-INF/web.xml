@@ -102,6 +102,7 @@
         <url-pattern>/life</url-pattern>
     </servlet-mapping>
 
+<!--    lab-->
     <servlet>
         <servlet-name>MyDearCycleServlet</servlet-name>
         <servlet-class>com.huanghong.lab.MyDearServlet</servlet-class>
