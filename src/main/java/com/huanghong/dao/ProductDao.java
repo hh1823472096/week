@@ -2,22 +2,23 @@ package com.huanghong.dao;
 
 import com.huanghong.model.Product;
 
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao implements  IProductDao{
+    private Blob Picture;
+
     @Override
-    public int save(Product product,InputStream picture, Connection con) throws SQLException {
+    public int save(Product product, Connection con) throws SQLException {
         int n;
         String sql = "insert into product(ProductName,ProductDescription,Picture,price,CategoryID) values(?,?,?,?,?)";
         PreparedStatement pt = con.prepareStatement(sql);
         pt.setString(1, product.getProductName());
         pt.setString(2, product.getProductDescripton());
-        if(picture!=null) {
+        if(Picture!=null) {
             //for sql server
-            pt.setBlob(3, picture);
+            pt.setBlob(3, Picture);
             //   for mysql
             //   pt.setBlob(3, product.getPicture());
         }

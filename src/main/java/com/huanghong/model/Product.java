@@ -1,6 +1,6 @@
 package com.huanghong.model;
 import java.io.InputStream;
-
+import java.sql.Connection;
 public class Product {
     private  Integer productId;
     private Integer categoryId;

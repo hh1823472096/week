@@ -2,7 +2,6 @@ package com.huanghong.dao;
 
 import com.huanghong.model.Product;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,7 +13,7 @@ public interface IProductDao {
 	 * Insert a product
 	 * @return int
 	 */
-	public int save(Product product, InputStream picture, Connection con) throws SQLException;
+	public int save(Product product, Connection con) throws SQLException;
 	/**
 	 * Delete a product by productId
 	 * @return int
