@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-
 public class UserDao implements IUserDao{
     @Override
     public boolean saveUser(Connection con, User user) throws SQLException {
@@ -16,26 +15,19 @@ public class UserDao implements IUserDao{
         String password = user.getPassword();
         String email = user.getEmail();
         String gender = user.getGender();
-        java.sql.Date  brithdate= user.getBrithdate();
-        String sql = "INSERT INTO usertable(id,username,password,email,gender,brithdate) VALUES(?,?,?,?,?,?)";
-        int id = 0;
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                id = resultSet.getInt("min");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        java.sql.Date birthday = user.getBrithdate();
+        String sql = "INSERT INTO usertable(username,password,email,gender,brithdate) VALUES(?,?,?,?,?)";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,username);
+        st.setString(2,password);
+        st.setString(3,email);
+        st.setLong(4, Long.parseLong(gender));
+        st.setDate(5, birthday);
+        if(st.executeUpdate()>0){
+            return true;
+        }else{
+            return true;
         }
-        PreparedStatement M = con.prepareStatement(sql);
-        M.setInt(1,id);
-        M.setString(2,username);
-        M.setString(3,password);
-        M.setString(4,email);
-        M.setString(5, gender);
-        M.setDate(6, brithdate);
-        return M.executeUpdate() > 0;
     }
 
     @Override
@@ -46,34 +38,29 @@ public class UserDao implements IUserDao{
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
         String sql="update usertable set username=?,password=?,email=?,gender=?,brithdate=? where id=?";
-        long id =user.getId();
+        long id = user.getId();
         String username = user.getUsername();
         String password = user.getPassword();
         String email = user.getEmail();
         String gender = user.getGender();
         java.sql.Date birthday = user.getBrithdate();
-        PreparedStatement N = con.prepareStatement(sql);
-        N.setString(1,username);
-        N.setString(2,password);
-        N.setString(3,email);
-        N.setString(4,gender);
-        N.setDate(5,birthday);
-        N.setLong(6,id);
-        return N.executeUpdate();
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,username);
+        st.setString(2,password);
+        st.setString(3,email);
+        st.setLong(4, Long.parseLong(gender));
+        st.setDate(5,birthday);
+        st.setLong(6,id);
+        int result = st.executeUpdate();
+        return result;
     }
 
     @Override
     public User findById(Connection con, Integer id) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public User findByUsernamePassword(Connection con, String username, String password) throws SQLException {
-        String sql = "select id,username,password,email,gender,brithdate from usertable where username=? and password=?";
-        PreparedStatement N = con.prepareStatement(sql);
-        N.setString(1,username);
-        N.setString(2,password);
-        ResultSet rs = N.executeQuery();
+        String sql = "select * from usertable where id = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1,id);
+        ResultSet rs = preparedStatement.executeQuery();
         User user=null;
         if(rs.next()){
             user=new User();
@@ -81,8 +68,28 @@ public class UserDao implements IUserDao{
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
-            user.setGender(rs.getString("gender"));
-            user.setBrithdate(rs.getDate("brithdate"));
+            user.setGender(String.valueOf(rs.getInt("gender")));
+            user.setBrithdate(rs.getDate("birthday"));
+        }
+        return user;
+    }
+
+    @Override
+    public User findByUsernamePassword(Connection con, String username, String password) throws SQLException {
+        String sql = "select id,username,password,email,gender,brithdate from usertable where username=? and password=?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,username);
+        st.setString(2,password);
+        ResultSet rs = st.executeQuery();
+        User user=null;
+        if(rs.next()){
+            user=new User();
+            user.setId(Long.parseLong(rs.getString("id")));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(String.valueOf(rs.getInt("gender")));
+            user.setBrithdate(rs.getDate("birthday"));
         }
         return user;
     }
